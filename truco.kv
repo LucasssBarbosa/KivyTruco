@@ -57,6 +57,42 @@
             width: 1
             rectangle: (self.x + 1, self.y + 1, self.width - 2, self.height - 2)
 
+<Ganhou@Button>:
+    size_hint: 0.40, None
+    size: 100, 50
+    font_size: 20
+    color: 0, 0, 0, 1
+    canvas.before:
+        Color:
+            rgba: 0, 1, 0, 1  # Cor do fundo verde
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+        Color:
+            rgba: 0, 0, 0, 1  # Cor da borda preta
+        Line:
+            width: 1
+            rectangle: (self.x + 1, self.y + 1, self.width - 2, self.height - 2)
+
+<Fugiu@Button>:
+    size_hint: 0.40, None
+    size: 100, 50
+    font_size: 20
+    color: 0, 0, 0, 1
+    canvas.before:
+        # Color:
+        #     rgba: 1, 0, 0, 1  # Cor do fundo vermelho
+        # Rectangle:
+        #     pos: self.pos
+        #     size: self.size
+
+        Color:
+            rgba: 0, 0, 0, 1  # Cor da borda preta
+        Line:
+            width: 1
+            rectangle: (self.x + 1, self.y + 1, self.width - 2, self.height - 2)
+
 
 
 BoxLayout:
@@ -84,8 +120,8 @@ BoxLayout:
         cols: 3
         rows: 3
         Label:
-            size_hint: None, None
-            size: 90, 45
+            size_hint: 0.1, None
+            size: 90, 90
         Nometime:
             text: 'time 1'
         Nometime:
@@ -102,3 +138,23 @@ BoxLayout:
             text: '3'
         Pontos:
             text: '4'
+
+    GridLayout:
+        cols: 3
+        rows: 2
+        Label:
+            size_hint: 0.1, None
+            size: 90, 45
+            color: 1, 1, 1, 1
+        Ganhou:
+            text: 'GANHOU'
+        Ganhou:
+            text: 'GANHOU'
+        Label:
+            size_hint: 0.1, None
+            size: 90, 45
+            color: 1, 1, 1, 1
+        Fugiu:
+            text: 'FUGIU'
+        Fugiu:
+            text: 'FUGIU'
