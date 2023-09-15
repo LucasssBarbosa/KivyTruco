@@ -73,34 +73,34 @@ class TrucoApp(BoxLayout):
             if self.pontosenvido == 0:
                 self.pontosenvido = 1
                 self.ids.pontos.text = str(self.pontosenvido)
-                self.ids.btruco.text = 'Aceita?'
+                self.ids.benvido.text = 'Aceita?'
                 self.ids.tipo.text == 'Envido'
             elif self.pontosenvido == 1:
                 self.pontosenvido = 2
                 self.ids.pontos.text = str(self.pontosenvido)
-                self.ids.btruco.text = 'Real Envido'
+                self.ids.benvido.text = 'Real Envido'
                 self.ids.tipo.text == 'Envido'
             elif self.pontosenvido == 2:
                 self.pontosenvido = 5
                 self.ids.pontos.text = str(self.pontosenvido)
-                self.ids.btruco.text = 'Falta Envido'
+                self.ids.benvido.text = 'Falta Envido'
                 self.ids.tipo.text == 'Envido'
             elif self.pontosenvido == 5:
                 self.pontosenvido = max(int(self.ids.tentos1.text),int(self.ids.tentos1.text))
                 self.ids.pontos.text = str(self.pontosenvido)
-                self.ids.btruco.text = 'Ta na Mesa'
+                self.ids.benvido.text = 'Ta na Mesa'
                 self.ids.tipo.text == 'Envido'
 
     def Flor(self):
         if self.pontosflor == 0:
             self.pontosenvido = 3
             self.ids.pontos.text = str(self.pontosenvido)
-            self.ids.btruco.text = 'Tem para contra-flor?'
+            self.ids.bflor.text = 'Tem para contra-flor?'
             self.ids.tipo.text == 'Flor'
         elif self.pontosflor == 3:
             self.pontosenvido = 6
             self.ids.pontos.text = str(self.pontosenvido)
-            self.ids.btruco.text = 'E o resto?'
+            self.ids.bflor.text = 'E o resto?'
             self.ids.tipo.text == 'Flor'
         elif self.pontosflor == 6:
             self.pontosenvido = max(int(self.ids.tentos1.text),int(self.ids.tentos1.text))
