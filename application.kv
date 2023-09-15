@@ -5,15 +5,15 @@
     background_color: 1, 1, 1, .5
     foreground_color: 0,0,0, 1
     cursor_color: 1, 1, 1, 1
-    font_size: 30
+    font_size: 20
 
 <Titulos@Label>:
     size_hint_x: 0.5
     color: 1, 1, 1, 1
-    font_size:30
+    font_size:20
     canvas.before:
         Color:
-            rgba: 1, 0, 0, 1
+            rgba: 0, 0, 0, 0.7
         Rectangle:
             pos: self.pos
             size: self.size
@@ -23,7 +23,7 @@
 
 <Pontos@Label>:
     color: 1, 1, 1, 1
-    font_size:30
+    font_size:20
     canvas.before:
         Color:
             rgba: 0, 0, 0, 1
@@ -33,7 +33,7 @@
 
 <Ganhou@Button>:
     text: 'Ganhou'
-    font_size:30
+    font_size:20
 
 
 <TrucoApp>:
@@ -47,6 +47,7 @@
         cols: 3
         rows: 4
         spacing: 10
+        padding: 10
         # size_hint_y: None
         # height: 250
         # row_force_default: True
@@ -63,7 +64,7 @@
         Time:
             text: 'Time 2'
         Titulos:
-            text: 'bois'
+            text: 'Bois'
         Pontos:
             id: bois1
             text: '0'
@@ -78,32 +79,49 @@
         Pontos:
             id: tentos2
             text: '0'
+
+
+        Space:
+        # BoxLayout:
+        #     size_hint_x: 0.5
+        #     Button:
+        #         name: 'time1'
+        #         text: '-'
+        #         on_press: root.Menos(self.name)
+        #     Button:
+        #         name: 'time2'
+        #         text: '-'
+        #         on_press: root.Menos(self.name)
+
+
+
         BoxLayout:
+            Ganhou:
+                name: 'time1'
+                text: 'Ganhou'
+                on_press: root.ganhou(self.name)
             Button:
                 name: 'time1'
-                text: '-'
+                text: '-1'
                 on_press: root.Menos(self.name)
+        BoxLayout:
+            Ganhou:
+                name: 'time2'
+                text: 'Ganhou'
+                on_press: root.ganhou(self.name)
             Button:
                 name: 'time2'
-                text: '-'
+                text: '-1'
                 on_press: root.Menos(self.name)
-        Ganhou:
-            name: 'time1'
-            text: 'Ganhou1'
-            on_press: root.ganhou(self.name)
-        Ganhou:
-            name: 'time2'
-            text: 'Ganhou2'
-            on_press: root.ganhou(self.name)
             
     BoxLayout:
         padding:10
-        canvas.before:
-            Color:
-                rgba: 1,0,0, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
+        # canvas.before:
+        #     Color:
+        #         rgba: 1,0,0, 1
+        #     Rectangle:
+        #         pos: self.pos
+        #         size: self.size
         BoxLayout:
             spacing: 10
             canvas.before:
@@ -114,11 +132,12 @@
                     size: self.size
             Label:
                 id:tipo
-                text: 'Truco'
+                name: ''
+                text: '-----'
                 font_size:50
                 canvas.before:
                     Color:
-                        rgba: 0,0,1,1
+                        rgba: 0,0,0,0.5
                     Rectangle:
                         pos: self.pos
                         size: self.size
@@ -129,16 +148,29 @@
         
     BoxLayout:
         padding: 10
-        BoxLayout:
-            Button:
-                id: btruco
-                text: 'Truco'
-                on_press: root.Truco()
+        GridLayout:
+            cols: 3
+            rows: 2
             Button:
                 id: benvido
                 text: 'Envido'
                 on_press: root.Envido()
             Button:
+                id: btruco
+                text: 'Truco'
+                on_press: root.Truco()
+            Button:
                 id: bflor
                 text: 'Flor'
                 on_press: root.Flor()
+            Button:
+                text: 'Falta envido'
+                on_press: root.FaltaEnvido()
+            Button:
+                background_color: 1,0,0,1
+                text: 'limpar'
+                on_press: root.Clear()
+            Button:
+                text: 'contra-flor e o resto'
+                on_press: root.FaltaFlor()
+
