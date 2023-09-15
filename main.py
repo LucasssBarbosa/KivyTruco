@@ -41,13 +41,13 @@ class TrucoApp(BoxLayout):
                     self.ids.tentos1.text = '0'
                     self.ids.tentos2.text = '0'
 
-            self.ids.tipo.text = ''
+            self.ids.tipo.text = '-----'
             self.pontostruco = 1
             self.pontosenvido = 0
             self.pontosflor = 0
             self.ids.pontos.text = str(self.pontostruco)
 
-        self.ids.tipo.text = ''
+        self.ids.tipo.text = '-----'
         self.ids.btruco.text = 'Truco'
         self.ids.benvido.text = 'Envido'
         self.ids.bflor.text = 'Flor'
@@ -122,9 +122,9 @@ class TrucoApp(BoxLayout):
             self.ids.tipo.name = 'Flor'
     
     def Menos(self,time):
-        if time == 'time1':
+        if time == 'time1' and int(self.ids.tentos1.text) > 0:
             self.ids.tentos1.text = str(int(self.ids.tentos1.text)-1)
-        if time == 'time2':
+        if time == 'time2' and int(self.ids.tentos2.text) > 0:
             self.ids.tentos2.text = str(int(self.ids.tentos2.text)-1)
 
     def FaltaEnvido(self):
