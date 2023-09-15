@@ -24,7 +24,7 @@
 <Pontos@Label>:
     color: 1, 1, 1, 1
     font_size:30
-    canvas.after:
+    canvas.before:
         Color:
             rgba: 0, 0, 0, 1
         Rectangle:
@@ -47,52 +47,57 @@
         cols: 3
         rows: 4
         spacing: 10
-        size_hint_y: None
-        height: 250
-        row_force_default: True
-        row_default_height: 50
+        # size_hint_y: None
+        # height: 250
+        # row_force_default: True
+        # row_default_height: 50
         canvas.before:
             Color:
                 rgba: 1, 1, 1, 1
             Rectangle:
                 pos: self.pos
                 size: self.size
-        # Titulos:
-        #     canvas.before:
-        #         Clear:
         Space:
         Time:
             text: 'Time 1'
         Time:
             text: 'Time 2'
         Titulos:
-            text: 'Tentos'
-        Pontos:
-            id: tentos1
-            text: 'tentos1'
-        Pontos:
-            id: tentos2
-            text: 'tentos2'
-        Titulos:
             text: 'bois'
         Pontos:
             id: bois1
-            text: 'bois1'
+            text: '0'
         Pontos:
             id: bois2
-            text: 'bois2'
-        Space:
+            text: '0'
+        Titulos:
+            text: 'Tentos'
+        Pontos:
+            id: tentos1
+            text: '0'
+        Pontos:
+            id: tentos2
+            text: '0'
+        BoxLayout:
+            Button:
+                name: 'time1'
+                text: '-'
+                on_press: root.Menos(self.name)
+            Button:
+                name: 'time2'
+                text: '-'
+                on_press: root.Menos(self.name)
         Ganhou:
-            id: ganhou1
+            name: 'time1'
             text: 'Ganhou1'
-            on_press: root.ganhou()
+            on_press: root.ganhou(self.name)
         Ganhou:
-            id: ganhou2
+            name: 'time2'
             text: 'Ganhou2'
-            on_press: root.ganhou()
+            on_press: root.ganhou(self.name)
             
     BoxLayout:
-        padding:15
+        padding:10
         canvas.before:
             Color:
                 rgba: 1,0,0, 1
@@ -108,7 +113,8 @@
                     pos: self.pos
                     size: self.size
             Label:
-                text: 'envido'
+                id:tipo
+                text: 'Truco'
                 font_size:50
                 canvas.before:
                     Color:
@@ -117,6 +123,22 @@
                         pos: self.pos
                         size: self.size
             Label:
-                text: '0'
+                id: pontos
+                text: '1'
                 font_size:50
-            
+        
+    BoxLayout:
+        padding: 10
+        BoxLayout:
+            Button:
+                id: btruco
+                text: 'Truco'
+                on_press: root.Truco()
+            Button:
+                id: benvido
+                text: 'Envido'
+                on_press: root.Envido()
+            Button:
+                id: bflor
+                text: 'Flor'
+                on_press: root.Flor()
