@@ -5,10 +5,12 @@
     background_color: 1, 1, 1, .5
     foreground_color: 0,0,0, 1
     cursor_color: 1, 1, 1, 1
+    font_size: 30
 
 <Titulos@Label>:
-    size_hint_x: 0.3
+    size_hint_x: 0.5
     color: 1, 1, 1, 1
+    font_size:30
     canvas.before:
         Color:
             rgba: 1, 0, 0, 1
@@ -16,8 +18,12 @@
             pos: self.pos
             size: self.size
 
+<Space@Widget>:
+    size_hint_x: 0.5
+
 <Pontos@Label>:
     color: 1, 1, 1, 1
+    font_size:30
     canvas.after:
         Color:
             rgba: 0, 0, 0, 1
@@ -27,6 +33,7 @@
 
 <Ganhou@Button>:
     text: 'Ganhou'
+    font_size:30
 
 
 <TrucoApp>:
@@ -40,6 +47,8 @@
         cols: 3
         rows: 4
         spacing: 10
+        size_hint_y: None
+        height: 250
         row_force_default: True
         row_default_height: 50
         canvas.before:
@@ -48,7 +57,10 @@
             Rectangle:
                 pos: self.pos
                 size: self.size
-        Titulos:
+        # Titulos:
+        #     canvas.before:
+        #         Clear:
+        Space:
         Time:
             text: 'Time 1'
         Time:
@@ -69,20 +81,42 @@
         Pontos:
             id: bois2
             text: 'bois2'
-        Titulos:
+        Space:
         Ganhou:
             id: ganhou1
             text: 'Ganhou1'
-            on_press: root.ganhou(self.text)
+            on_press: root.ganhou()
         Ganhou:
             id: ganhou2
             text: 'Ganhou2'
-            on_press: root.ganhou(self.text)
+            on_press: root.ganhou()
             
     BoxLayout:
+        padding:15
         canvas.before:
             Color:
-                rgba: 0,0,0, 1
+                rgba: 1,0,0, 1
             Rectangle:
                 pos: self.pos
                 size: self.size
+        BoxLayout:
+            spacing: 10
+            canvas.before:
+                Color: 
+                    rgba:0,1,0,1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'envido'
+                font_size:50
+                canvas.before:
+                    Color:
+                        rgba: 0,0,1,1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            Label:
+                text: '0'
+                font_size:50
+            
