@@ -55,43 +55,38 @@ class TrucoApp(BoxLayout):
         
 
     def Truco(self):
-        if self.pontostruco == 1:
-            self.pontostruco = 2
-            self.ids.pontos.text = str(self.pontostruco)
-            self.ids.btruco.text = 'Retruco'
-            self.ids.tipo.text = 'Truco'
-            self.ids.tipo.name = 'Truco'
-        elif self.pontostruco == 2:
-            self.pontostruco = 3
-            self.ids.pontos.text = str(self.pontostruco)
-            self.ids.btruco.text = 'Vale 4'
-            self.ids.tipo.text = 'Retruco'
-            self.ids.tipo.name = 'Truco'
-        elif self.pontostruco == 3:
-            self.pontostruco = 4
-            self.ids.pontos.text = str(self.pontostruco)
-            self.ids.btruco.text = 'Vale o jogo'
-            self.ids.tipo.text = 'valendo 4'
-            self.ids.tipo.name = 'Truco'
-        elif self.pontostruco == 4:
-            self.pontostruco = 15
-            self.ids.pontos.text = 'X'
-            self.ids.btruco.text = 'valendo o jogo'
-            self.ids.tipo.text = 'valendo o jogo'
-            self.ids.tipo.name = 'Truco'
+        if self.ids.tipo.text != '':
+            if self.pontostruco == 1:
+                self.pontostruco = 2
+                self.ids.pontos.text = str(self.pontostruco)
+                self.ids.btruco.text = 'Retruco'
+                self.ids.tipo.text = 'Truco'
+                self.ids.tipo.name = 'Truco'
+            elif self.pontostruco == 2:
+                self.pontostruco = 3
+                self.ids.pontos.text = str(self.pontostruco)
+                self.ids.btruco.text = 'Vale 4'
+                self.ids.tipo.text = 'Retruco'
+                self.ids.tipo.name = 'Truco'
+            elif self.pontostruco == 3:
+                self.pontostruco = 4
+                self.ids.pontos.text = str(self.pontostruco)
+                self.ids.btruco.text = 'Vale o jogo'
+                self.ids.tipo.text = 'valendo 4'
+                self.ids.tipo.name = 'Truco'
+            elif self.pontostruco == 4:
+                self.pontostruco = 15
+                self.ids.pontos.text = 'X'
+                self.ids.btruco.text = 'valendo o jogo'
+                self.ids.tipo.text = 'valendo o jogo'
+                self.ids.tipo.name = 'Truco'
 
     def Envido(self):
-        if self.ids.tipo.text != 'Flor':
+        if self.ids.tipo.text != '':
             if self.pontosenvido == 0:
-                self.pontosenvido = 1
-                self.ids.pontos.text = str(self.pontosenvido)
-                self.ids.benvido.text = 'Aceita?'
-                self.ids.tipo.text = 'Envido'
-                self.ids.tipo.name = 'Envido'
-            elif self.pontosenvido == 1:
                 self.pontosenvido = 2
                 self.ids.pontos.text = str(self.pontosenvido)
-                self.ids.benvido.text = 'Real Envido'
+                self.ids.benvido.text = 'real envido?'
                 self.ids.tipo.text = 'Envido'
                 self.ids.tipo.name = 'Envido'
             elif self.pontosenvido == 2:
@@ -102,24 +97,19 @@ class TrucoApp(BoxLayout):
                 self.ids.tipo.name = 'Envido'
 
     def Flor(self):
-        if self.pontosflor == 0:
-            self.pontosflor= 3
-            self.ids.pontos.text = str(self.pontosflor)
-            self.ids.bflor.text = 'Tem para contra-flor?'
-            self.ids.tipo.text = 'Flor'
-            self.ids.tipo.name = 'Flor'
-        elif self.pontosflor == 3:
-            self.pontosenvido = 6
-            self.ids.pontos.text = str(self.pontosenvido)
-            self.ids.bflor.text = 'E o resto?'
-            self.ids.tipo.text = 'contra-flor'
-            self.ids.tipo.name = 'Flor'
-        elif self.pontosflor == 6:
-            self.pontosenvido = max(int(self.ids.tentos1.text),int(self.ids.tentos2.text))
-            self.ids.pontos.text = str(self.pontosenvido)
-            self.ids.btruco.text = 'quem vai levar o boi?'
-            self.ids.tipo.text = 'contra flor e o resto'
-            self.ids.tipo.name = 'Flor'
+        if self.ids.tipo.text != '':
+            if self.pontosflor == 0:
+                self.pontosflor= 3
+                self.ids.pontos.text = str(self.pontosflor)
+                self.ids.bflor.text = 'contra-flor?'
+                self.ids.tipo.text = 'Flor'
+                self.ids.tipo.name = 'Flor'
+            elif self.pontosflor == 3:
+                self.pontosenvido = 6
+                self.ids.pontos.text = str(self.pontosenvido)
+                self.ids.bflor.text = 'E o resto?'
+                self.ids.tipo.text = 'contra-flor'
+                self.ids.tipo.name = 'Flor'
     
     def Menos(self,time):
         if time == 'time1' and int(self.ids.tentos1.text) > 0:
@@ -135,7 +125,7 @@ class TrucoApp(BoxLayout):
 
     def FaltaFlor(self):
         self.ids.pontos.text = str(15 - max(int(self.ids.tentos1.text),int(self.ids.tentos2.text)))
-        self.ids.bflor.text = 'quem vai levar o boi'
+        self.ids.bflor.text = 'Falta'
         self.ids.tipo.text = 'Falta Flor'
         self.ids.tipo.name = 'Flor'
 
